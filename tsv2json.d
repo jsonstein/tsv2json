@@ -1,6 +1,5 @@
 import std.string;
 import std.stdio;
-import std.array;
 
 string oneRecord( string[] someTokens, string[] someHeaders ) {
   string thisRecord = "{";
