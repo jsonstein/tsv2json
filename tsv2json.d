@@ -1,5 +1,4 @@
 import std.string;
-import std.regex;
 import std.stdio;
 import std.array;
 
