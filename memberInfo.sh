@@ -6,5 +6,5 @@ fi
 echo "cleaning up"
 rm "$1"_"$2".json
 echo "getting list members"
-t list members --csv @"$1"/"$2" | csv2tsv | tsv2json > "$1"_"$2".json
+t list members --csv @"$1"/"$2" | csv2tsv | tsv2json --compact > "$1"_"$2".json
 echo "done"
