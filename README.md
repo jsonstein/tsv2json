@@ -21,7 +21,7 @@ byCandidateName nameForSearch
 
 memberInfo.sh twitterUserHandle listname
 
-      uses <a href="https://github.com/sferik/t" title="command line tool for Twitter">t</a> to get users who are members of a particular list, then <a href="https://github.com/eBay/tsv-utils-dlang" title="tsv utilities">csv2tsv</a> to pre-process into tsv, and finally **tsv2json** to produce output as reasonably-compact stringified-JSON.
+      uses [t](https://github.com/sferik/t) to get users who are members of a particular list, then <a href="https://github.com/eBay/tsv-utils-dlang" title="tsv utilities">csv2tsv</a> to pre-process into tsv, and finally **tsv2json** to produce output as reasonably-compact stringified-JSON.
 
 ## Motivation
 
