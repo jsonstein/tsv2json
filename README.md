@@ -16,10 +16,11 @@ byCandidateName nameForSearch
 
       searches FEC candidates data by (possibly url-encoded) name
       and writes json file to stdout
-      
+
       example: byCandidateName &quot;TRUMP, DONALD J.&quot;
 
 memberInfo.sh twitterUserHandle listname
+
       uses <a href="https://github.com/sferik/t" title="command line tool for Twitter">t</a> to get users who are members of a particular list, then <a href="https://github.com/eBay/tsv-utils-dlang" title="tsv utilities">csv2tsv</a> to pre-process into tsv, and finally **tsv2json** to produce output as reasonably-compact stringified-JSON.
 
 ## Motivation
