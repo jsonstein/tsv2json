@@ -3,6 +3,10 @@
 
 *.tsv
 
+*.csv
+
+*.o
+
 tsv2json
 
-tsv2json.o
+byCandidateName

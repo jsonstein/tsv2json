@@ -80,7 +80,7 @@ void compactOutput() {
 void usageOutput() {
   stderr.writeln( "Usage: tsv2json [-c | --compact]" );
   stderr.writeln( "       reads a tsv file from stdin and writes a json file to stdout" );
-  stderr.writeln( "       at the moment it just assumes there is a header record to use as JSON keys" );
+  stderr.writeln( "       assumes there is a header record to use as JSON keys" );
 }
 
 void main( string[] args ) {
