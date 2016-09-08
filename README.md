@@ -7,12 +7,16 @@ Experiments with command line programs for streams processing in the D programmi
 ## Code Examples
 
 tsv2json [-c | --compact]
+
       reads a tsv file from stdin and writes a json file to stdout
+
       assumes there is a header record to use as JSON keys
 
 byCandidateName nameForSearch
+
       searches FEC candidates data by (possibly url-encoded) name
       and writes json file to stdout
+      
       example: byCandidateName &quot;TRUMP, DONALD J.&quot;
 
 memberInfo.sh twitterUserHandle listname
