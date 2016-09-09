@@ -5,7 +5,7 @@ string stdRecord( string[] someTokens, string[] someHeaders ) {
   string thisRecord = "{";
   auto thisLength = someTokens.length;
   foreach( int i, string aToken; someTokens ) {
-    thisRecord = thisRecord ~ "\"" ~ someHeaders[ i ] ~ "\": \"" ~ aToken.replace( "\"", " " ) ~ "\"";
+    thisRecord = thisRecord ~ "\"" ~ someHeaders[ i ] ~ "\":\"" ~ aToken.replace( "\"", " " ) ~ "\"";
     if( i<(thisLength-1) ) {
       thisRecord = thisRecord ~ ",";
     }
@@ -77,8 +77,8 @@ void compactOutput() {
   writef( "]}]" ); // and close off the object
 }
 
-void usageOutput() {
-  stderr.writeln( "Usage: tsv2json [-c | --compact]" );
+void usageOutput( string programName ) {
+  stderr.writeln( "Usage: " ~ programName ~ " [-c | --compact]" );
   stderr.writeln( "       reads a tsv file from stdin and writes a json file to stdout" );
   stderr.writeln( "       assumes there is a header record to use as JSON keys" );
 }
@@ -92,10 +92,10 @@ void main( string[] args ) {
       compactOutput();
     }
     else {
-      usageOutput();
+      usageOutput( args[ 0 ]);
     }
   }
   else if( args.length > 2 ) {
-    usageOutput();
+    usageOutput( args[ 0 ]);
   }
 }
