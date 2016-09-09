@@ -3,14 +3,15 @@ import std.stdio;
 
 string stdRecord( string[] someTokens, string[] someHeaders ) {
   string thisRecord = "{";
-  string thisData;
   auto thisLength = someTokens.length;
-  for( int i=0; i<(thisLength-1); i++ ) {
-    thisData = replace( someTokens[ i ], "\"", " " );
-    thisRecord = thisRecord ~ "\"" ~ someHeaders[i] ~ "\": \"" ~ thisData ~ "\",";
+  foreach( int i, string aToken; someTokens ) {
+    thisRecord = thisRecord ~ "\"" ~ someHeaders[ i ] ~ "\": \"" ~ aToken.replace( "\"", " " ) ~ "\"";
+    if( i<(thisLength-1) ) {
+      thisRecord = thisRecord ~ ",";
+    }
   }
-  thisData = replace( someTokens[ thisLength-1 ], "\"", " " );
-  thisRecord = thisRecord ~ "\"" ~ someHeaders[thisLength-1] ~ "\": \"" ~ thisData ~ "\"}";
+  thisRecord = thisRecord ~ "}";
+  //
   return thisRecord;
 }
 
@@ -29,9 +30,8 @@ string compactRecord( string[] someTokens ) {
 
 string[] cleanHeaders( string aLine ) {
   string[] theseHeaders = aLine.split( "\t" );
-  for( int i=0; i<theseHeaders.length; i++ ) {
-    theseHeaders[ i ] = replace( theseHeaders[ i ], "\"", " " );
-    theseHeaders[ i ] = replace( theseHeaders[ i ], " ", "_" );
+  foreach( int i, string aHeader; theseHeaders ) {
+    theseHeaders[ i ] = aHeader.replace( "\"", " " ).replace( " ", "_" );
   }
   return theseHeaders;
 }
