@@ -19,7 +19,7 @@ string compactRecord( string[] someTokens ) {
   string thisRecord = "[";
   auto thisLength = someTokens.length;
   foreach( int i, string thisToken; someTokens ) {
-    thisRecord = thisRecord ~ "\"" ~ replace( thisToken, "\"", " " ) ~ "\"";
+    thisRecord = thisRecord ~ "\"" ~ thisToken.replace( "\"", " " ) ~ "\"";
     if( i < (thisLength -1) ) {
       thisRecord = thisRecord ~ ",";
     }
