@@ -6,12 +6,11 @@ string stdRecord( string[] someTokens, string[] someHeaders ) {
   auto thisLength = someTokens.length;
   foreach( int i, string aToken; someTokens ) {
     thisRecord = thisRecord ~ "\"" ~ someHeaders[ i ] ~ "\":\"" ~ aToken.replace( "\"", " " ) ~ "\"";
-    if( i<(thisLength-1) ) {
+    if( i < ( thisLength - 1 ) ) {
       thisRecord = thisRecord ~ ",";
     }
   }
   thisRecord = thisRecord ~ "}";
-  //
   return thisRecord;
 }
 
@@ -20,7 +19,7 @@ string compactRecord( string[] someTokens ) {
   auto thisLength = someTokens.length;
   foreach( int i, string thisToken; someTokens ) {
     thisRecord = thisRecord ~ "\"" ~ thisToken.replace( "\"", " " ) ~ "\"";
-    if( i < (thisLength -1) ) {
+    if( i < ( thisLength - 1 ) ) {
       thisRecord = thisRecord ~ ",";
     }
   }
@@ -39,11 +38,11 @@ string[] cleanHeaders( string aLine ) {
 void stdOutput() {
   string line;
   // get the headers
-  readf(" %s\n", &line);
+  readf( " %s\n", &line );
   string[] myHeaders = cleanHeaders( line );
   writef( "[" ); // start output array
   bool firstOne = true;
-  while ( (readf(" %s\n", &line)) >= 1 ) { // at least 1 char returned
+  while ( ( readf( " %s\n", &line ) ) >= 1 ) { // at least 1 char returned
     if( !firstOne ) {
       writef( "," );
     }
@@ -56,18 +55,19 @@ void stdOutput() {
 void compactOutput() {
   string line;
   // get the headers
-  readf(" %s\n", &line);
+  readf( " %s\n", &line );
   string[] myHeaders = cleanHeaders( line );
   writef( "[{\"headers\":[" ); // start with headers array
+  auto thisLength = myHeaders.length;
   foreach( int counter, string oneHeader; myHeaders ) {
     writef( "\"" ~ oneHeader ~"\"" );
-    if( counter < (myHeaders.length - 1) ) {
+    if( counter < ( thisLength - 1 ) ) {
       writef( ",");
     }
   }
   writef( "],\"records\":["); // and then add records arrays
   bool firstOne = true;
-  while ( (readf(" %s\n", &line)) >= 1 ) { // at least 1 char returned
+  while ( ( readf( " %s\n", &line ) ) >= 1 ) { // at least 1 char returned
     if( !firstOne ) {
       writef( "," );
     }
