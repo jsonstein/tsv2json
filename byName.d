@@ -3,7 +3,7 @@ import std.stdio;
 import std.net.curl;
 
 enum string requestPrefix = "https://api.open.fec.gov/v1/candidates/search/?api_key=";
-enum string apiKey = "Bss81x1utBhApvZCjBppBlQ21yNlMaV680kNvQYe"; // "yourAPIkeyHere";
+enum string apiKey = "yourAPIkeyHere";
 enum string searchFieldName = "&name=";
 enum string requestPartTwo = "&sort=name&per_page=20&page=1";
 
