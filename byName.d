@@ -3,7 +3,7 @@ import std.stdio;
 import std.net.curl;
 
 enum string requestPrefix = "https://api.open.fec.gov/v1/candidates/search/?api_key=";
-enum string apiKey = "yourAPIkeyHere";
+enum string apiKey = "Bss81x1utBhApvZCjBppBlQ21yNlMaV680kNvQYe"; // "yourAPIkeyHere";
 enum string searchFieldName = "&name=";
 enum string requestPartTwo = "&sort=name&per_page=20&page=1";
 
@@ -26,8 +26,8 @@ string urlencode( string text ){
 
 void usageOutput( string programName ) {
   stderr.writeln( "usage:   " ~ programName ~ " nameForSearch" );
-  stderr.writeln( "         searches FEC candidates data by (possibly url-encoded) name");
-  stderr.writeln( "example: " ~ programName ~ " \"TRUMP, DONALD J.\"");
+  stderr.writeln( "         searches FEC candidates data by (possibly url-encoded) name" );
+  stderr.writeln( "example: " ~ programName ~ " \"TRUMP, DONALD J.\"" );
 }
 
 void printOutput( string forWhom ) {
@@ -39,6 +39,6 @@ void main( string[] args ) {
     usageOutput( args[ 0 ] );
   }
   else {
-    printOutput( args[ 1 ]);
+    printOutput( args[ 1 ] );
   }
 }
