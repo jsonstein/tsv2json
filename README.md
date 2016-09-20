@@ -12,12 +12,12 @@ tsv2json [-c | --compact]
 
       assumes there is a header record to use as JSON keys
 
-byCandidateName nameForSearch
+byName nameForSearch
 
       searches FEC candidates data by (possibly url-encoded) name
       and writes json file to stdout
 
-      example: byCandidateName "TRUMP, DONALD J."
+      example: byName "TRUMP, DONALD J."
 
 memberInfo.sh twitterUserHandle listname
 
