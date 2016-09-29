@@ -37,27 +37,25 @@ string[] cleanHeaders( string aLine ) {
 
 void stdOutput() {
   string line;
-  // get the headers
-  readf( " %s\n", &line );
-  string[] myHeaders = cleanHeaders( line );
+  readf( " %s\n", &line ); // get the headers
+  string[] myHeaders = cleanHeaders( line );  // now kill some cruft
   writef( "[" ); // start output array
   bool firstOne = true;
   while ( ( readf( " %s\n", &line ) ) >= 1 ) { // at least 1 char returned
     if( !firstOne ) {
       writef( "," );
     }
-    writef( "%s", stdRecord( line.split( "\t" ), myHeaders ) );
+    writef( "%s", stdRecord( line.split( "\t" ), myHeaders ) );  // one record at a time
     firstOne = false;
   }
-  writef( "]" ); // end output array
+  writef( "]" ); // and close off writing the output array
 }
 
 void compactOutput() {
   string line;
-  // get the headers
-  readf( " %s\n", &line );
-  string[] myHeaders = cleanHeaders( line );
-  writef( "[{\"headers\":[" ); // start with headers array
+  readf( " %s\n", &line );  // get the headers
+  string[] myHeaders = cleanHeaders( line );  // now kill some cruft
+  writef( "[{\"headers\":[" ); // start writing with headers array
   auto thisLength = myHeaders.length;
   foreach( int counter, string oneHeader; myHeaders ) {
     writef( "\"" ~ oneHeader ~"\"" );
@@ -65,22 +63,22 @@ void compactOutput() {
       writef( ",");
     }
   }
-  writef( "],\"records\":["); // and then add records arrays
+  writef( "],\"records\":[" ); // and then add records arrays
   bool firstOne = true;
   while ( ( readf( " %s\n", &line ) ) >= 1 ) { // at least 1 char returned
     if( !firstOne ) {
       writef( "," );
     }
-    writef( "%s", compactRecord( line.split( "\t" ) ) );
+    writef( "%s", compactRecord( line.split( "\t" ) ) ); // one record at a time
     firstOne = false;
   }
-  writef( "]}]" ); // and close off the object
+  writef( "]}]" ); // and close off writing the object
 }
 
 void usageOutput( string programName ) {
   stderr.writeln( "Usage: " ~ programName ~ " [-c | --compact]" );
   stderr.writeln( "       reads a tsv file from stdin and writes a json file to stdout" );
-  stderr.writeln( "       assumes there is a header record to use as JSON keys" );
+  stderr.writeln( "       assumes there is an inital header record to use as JSON keys" );
 }
 
 void main( string[] args ) {
@@ -88,14 +86,14 @@ void main( string[] args ) {
     stdOutput();
   }
   else if( args.length == 2 ) {
-    if( (args[1] == "-c") || (args[1] == "--compact") ) {
+    if( (args[ 1 ] == "-c") || (args[ 1 ] == "--compact") ) {
       compactOutput();
     }
     else {
-      usageOutput( args[ 0 ]);
+      usageOutput( args[ 0 ] );
     }
   }
   else if( args.length > 2 ) {
-    usageOutput( args[ 0 ]);
+    usageOutput( args[ 0 ] );
   }
 }
