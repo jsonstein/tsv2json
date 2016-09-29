@@ -12,16 +12,9 @@ tsv2json [-c | --compact]
 
       assumes there is a header record to use as JSON keys
 
-byName nameForSearch
-
-      searches FEC candidates data by (possibly url-encoded) name
-      and writes json file to stdout
-
-      example: byName "TRUMP, DONALD J."
-
 memberInfo.sh twitterUserHandle listname
 
-uses <a href="https://github.com/sferik/t" title="t commandline tool">t</a> to get users who are members of a particular list, then <a href="https://github.com/eBay/tsv-utils-dlang" title="tsv utils">csv2tsv</a> to pre-process into tsv, and finally **tsv2json** to produce output as reasonably-compact stringified-JSON.
+      uses <a href="https://github.com/sferik/t" title="t commandline tool">t</a> to get users who are members of a particular list, then <a href="https://github.com/eBay/tsv-utils-dlang" title="tsv utils">csv2tsv</a> to pre-process into tsv, and finally **tsv2json** to produce output as reasonably-compact stringified-JSON.
 
 ## Motivation
 
